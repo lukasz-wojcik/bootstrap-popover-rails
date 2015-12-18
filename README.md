@@ -1,12 +1,11 @@
-# Bootstrap::Popover::Rails
+# Bootstrap Popover Rails
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/bootstrap/popover/rails`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This gem provides easy way to use twitter bootstrap popover with your Rails application.
+The Bootstrap's tooltip is a required dependency  for popover it is also available to use.
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Add this line to your Rails application's Gemfile:
 
 ```ruby
 gem 'bootstrap-popover-rails'
@@ -20,9 +19,46 @@ Or install it yourself as:
 
     $ gem install bootstrap-popover-rails
 
+## Conifguration
+
+To load javascripts add following to Your application.js:
+
+```
+//= require bootstrap/bootstrap-rails-tooltip
+//= require bootstrap/bootstrap-rails-popover
+```
+
+Tooltip is required to enable popover feature so it must be loaded before popover
+
+
+To load stylesheets add following to Your application.css:
+
+
+```
+*= require bootstrap/bootstrap-rails-tooltip
+*= require bootstrap/bootstrap-rails-popover
+```
+
+Requiring tooltip is not required here so might be ommited.
+
+
 ## Usage
 
-TODO: Write usage instructions here
+To get the default behaviour add following options to HTML element which should display popover
+
+```html
+<div data-content="This will be displayed as popover content"
+ data-toggle="popover" title="Popover"> Popover </div>
+```
+In your js file add following:
+
+```javascript
+$(function () {
+  $('[data-toggle="popover"]').popover();
+})
+```
+
+For more detiled info refer to official bootstrap documentation: http://getbootstrap.com/javascript/#popovers
 
 ## Development
 
@@ -38,4 +74,5 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/[USERN
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
+See [LICENSE](LICENSE)
 
